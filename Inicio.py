@@ -1,16 +1,28 @@
 import streamlit as st
 
-# Configuração básica da página
+# Configuração básica da página, sem ícones
 st.set_page_config(
     page_title="Desvendando Matemática",
-    page_icon="📐",
-    layout="centered" # 'centered' deixa o texto mais confortável para leitura que o 'wide'
+    layout="centered"
 )
 
-# Título baseado no README
-st.title("📐 Desvendando Matemática")
+# ==========================================
+# BARRA LATERAL CUSTOMIZADA (SIDEBAR)
+# ==========================================
+with st.sidebar:
+    st.markdown("### Navegação")
+    st.page_link("Inicio.py", label="Início")
+    
+    with st.expander("Módulo: Cálculo I"):
+        st.page_link("pages/1_Analise_de_graficos_via_derivadas.py", label="Análise de gráficos via derivadas")
+        st.page_link("pages/2_Teorema_de_Rolle_e_Valor_Medio.py", label="Teorema de Rolle e do Valor Médio")
+        st.page_link("pages/3_Testes_da_1a_e_2a_Derivada.py", label="Testes da 1ª e 2ª Derivada")
 
-# Introdução baseada no README
+# ==========================================
+# CORPO DA PÁGINA PRINCIPAL
+# ==========================================
+st.title("Desvendando Matemática")
+
 st.markdown("""
 Material didático interativo para explorar conceitos matemáticos por meio de explicações, gráficos e experimentação.
 
@@ -19,16 +31,10 @@ A proposta é aproximar a explicação teórica da exploração visual dos conce
 
 st.divider()
 
-# Módulo de Cálculo
-st.header("📚 Módulo: Cálculo I")
-st.markdown("Selecione um dos conteúdos abaixo para iniciar:")
+st.subheader("Conteúdo")
 
-# Botões clicáveis (alto contraste e fáceis de identificar)
-if st.button("1️⃣ Análise de gráficos via derivadas", use_container_width=True):
-    st.switch_page("pages/1_Analise_de_graficos_via_derivadas.py")
-
-if st.button("2️⃣ Teorema de Rolle e do Valor Médio", use_container_width=True):
-    st.switch_page("pages/2_Teorema_de_Rolle_e_Valor_Medio.py")
-
-if st.button("3️⃣ Testes da 1ª e 2ª Derivada", use_container_width=True):
-    st.switch_page("pages/3_Testes_da_1a_e_2a_Derivada.py")
+# Expansor no corpo da página
+with st.expander("Módulo: Cálculo I"):
+    st.page_link("pages/1_Analise_de_graficos_via_derivadas.py", label="Análise de gráficos via derivadas")
+    st.page_link("pages/2_Teorema_de_Rolle_e_Valor_Medio.py", label="Teorema de Rolle e do Valor Médio")
+    st.page_link("pages/3_Testes_da_1a_e_2a_Derivada.py", label="Testes da 1ª e 2ª Derivada")
